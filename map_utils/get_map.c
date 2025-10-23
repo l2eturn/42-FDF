@@ -84,13 +84,14 @@ t_map	*read_map(char *filename)
 
 	y = 0;
 	map = malloc(sizeof(t_map));
-	if (!map)
+	fd = open(filename, O_RDONLY);
+	if (!map || fd < 0)
+	{
+		free(map);
 		return (NULL);
+	}
 	get_map_size(filename, map);
 	map->matrix = malloc(sizeof(t_map_elem *) * map->height);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
-		return (NULL);
 	line = get_next_line(fd);
 	while (line)
 	{

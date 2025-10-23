@@ -20,7 +20,10 @@ int	main(int argc, char **argv)
 		return (1);
 	fdf.map = read_map(argv[1]);
 	if (!fdf.map)
+	{
+		free_map(fdf.map);
 		return (1);
+	}
 
 	fdf.scale = get_auto_scale(fdf.map, 800, 600);
 	fdf.z_scale = 1.5f;
