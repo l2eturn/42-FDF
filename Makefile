@@ -20,11 +20,11 @@ LDFLAGS = MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm
 LIBFT = libft/libft.a
 
 SRC =	main.c\
-		utils/get_map.c\
-		utils/map_trans.c\
+		map_utils/get_map.c\
+		map_utils/map_trans.c\
 		utils/parse_color.c\
 		utils/free_map.c\
-		u_draw/draw_line.c
+		utils/draw_line.c
 
 OBJ = $(SRC:.c=.o)
 
