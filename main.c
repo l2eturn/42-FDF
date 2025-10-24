@@ -28,7 +28,7 @@ int	main(int argc, char **argv)
 	fdf.scale = get_auto_scale(fdf.map, 800, 600);
 	fdf.z_scale = 1.5f;
 	fdf.x_offset = 400;
-	fdf.y_offset = 300;
+	fdf.y_offset = 200;
 	fdf.points = z_map_to_point(fdf.map, fdf.scale);
 	fdf.mlx = mlx_init(800, 600, "FdF", true);
 	fdf.img = mlx_new_image(fdf.mlx, 800, 600);

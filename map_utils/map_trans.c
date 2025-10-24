@@ -17,8 +17,8 @@ float	get_auto_scale(t_map *map, int width, int height)
 	float	scale_x;
 	float	scale_y;
 
-	scale_x = (float)width / (float)map->width / 2.0f;
-	scale_y = (float)height / (float)map->height / 2.0f;
+	scale_x = (float)width / (float)map->width / 1.5f;
+	scale_y = (float)height / (float)map->height / 1.5f;
 	if (scale_x < scale_y)
 		return (scale_x);
 	return (scale_y);
@@ -29,7 +29,7 @@ t_point project_iso(t_point p, t_fdf *fdf)
 	t_point new;
 	double 	angle;
 
-	angle = 0.523599; // 30°
+	angle = 0.523599;
 	new.x = (p.x - p.y) * cos(angle);
 	new.y = (p.x + p.y) * sin(angle) - (p.z * fdf->z_scale);
 	new.x += fdf->x_offset;
