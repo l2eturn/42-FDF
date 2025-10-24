@@ -14,7 +14,9 @@
 
 int	count_words(char **split)
 {
-	int	count = 0;
+	int	count;
+
+	count = 0;
 	while (split[count])
 		count++;
 	return (count);
@@ -22,7 +24,9 @@ int	count_words(char **split)
 
 void	ft_free_split(char **nums)
 {
-	int	i = 0;
+	int	i;
+
+	i = 0;
 	while (nums[i])
 		free(nums[i++]);
 	free(nums);

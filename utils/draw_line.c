@@ -12,38 +12,6 @@
 
 #include "fdf.h"
 
-static uint32_t	to_rgba(int color)
-{
-	uint8_t	r;
-	uint8_t	g;
-	uint8_t	b;
-
-	r = (color >> 16) & 0xFF;
-	g = (color >> 8) & 0xFF;
-	b = color & 0xFF;
-	return ((r << 24) | (g << 16) | (b << 8) | 0xFF);
-}
-
-static int	get_gradient_color(int c1, int c2, float t)
-{
-	int	r1;
-	int	g1;
-	int	b1;
-	int	r2;
-	int	g2;
-	int	b2;
-
-	r1 = (c1 >> 16) & 0xFF;
-	g1 = (c1 >> 8) & 0xFF;
-	b1 = c1 & 0xFF;
-	r2 = (c2 >> 16) & 0xFF;
-	g2 = (c2 >> 8) & 0xFF;
-	b2 = c2 & 0xFF;
-	return ((r1 + (int)((r2 - r1) * t)) << 16
-		| (g1 + (int)((g2 - g1) * t)) << 8
-		| (b1 + (int)((b2 - b1) * t)));
-}
-
 static int	calc_steps(float dx, float dy)
 {
 	if (fabsf(dx) > fabsf(dy))
@@ -126,4 +94,3 @@ void	draw_map(t_fdf *fdf)
 		y++;
 	}
 }
-

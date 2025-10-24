@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-#include <stdio.h>
 
 t_map_elem	parse_elem(char *str)
 {
@@ -21,11 +20,11 @@ t_map_elem	parse_elem(char *str)
 
 	split = ft_split(str, ',');
 	elem.z = ft_atoi(split[0]);
-
 	if (split[1])
 	{
 		color_str = split[1];
-		if (ft_strncmp(color_str, "0x", 2) == 0 || ft_strncmp(color_str, "0X", 2) == 0)
+		if (ft_strncmp(color_str, "0x", 2) == 0
+			|| ft_strncmp(color_str, "0X", 2) == 0)
 			elem.color = (int)strtol(color_str, NULL, 16);
 		else
 			elem.color = ft_atoi(color_str);
@@ -35,6 +34,3 @@ t_map_elem	parse_elem(char *str)
 	ft_free_split(split);
 	return (elem);
 }
-
-	
-	//printf("z=%d, color=0x%06X\n", elem.z, elem.color);

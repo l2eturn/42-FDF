@@ -24,10 +24,10 @@ float	get_auto_scale(t_map *map, int width, int height)
 	return (scale_y);
 }
 
-t_point project_iso(t_point p, t_fdf *fdf)
+t_point	project_iso(t_point p, t_fdf *fdf)
 {
-	t_point new;
-	double 	angle;
+	t_point	new;
+	double	angle;
 
 	angle = 0.523599;
 	new.x = (p.x - p.y) * cos(angle);
@@ -37,7 +37,6 @@ t_point project_iso(t_point p, t_fdf *fdf)
 	new.color = p.color;
 	return (new);
 }
-
 
 t_point	**z_map_to_point(t_map *map, float scale)
 {

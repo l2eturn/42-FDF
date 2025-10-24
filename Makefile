@@ -24,7 +24,8 @@ SRC =	main.c\
 		map_utils/map_trans.c\
 		utils/parse_color.c\
 		utils/free_map.c\
-		utils/draw_line.c
+		utils/draw_line.c\
+		utils/draw_line_helper.c
 
 OBJ = $(SRC:.c=.o)
 

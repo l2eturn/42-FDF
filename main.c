@@ -44,7 +44,7 @@ static void	key_hook(mlx_key_data_t key, void *param)
 		close_fdf(param);
 }
 
-static int err_handle(int ac, char **av, t_fdf *fdf)
+static int	err_handle(int ac, char **av, t_fdf *fdf)
 {
 	if (ac != 2)
 	{
@@ -91,7 +91,6 @@ int	main(int ac, char **av)
 	close_fdf(&fdf);
 	return (0);
 }
-
 
 //int	main(int argc, char **argv)
 //{

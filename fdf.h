@@ -63,6 +63,13 @@ typedef struct s_drawctx
 	int			i;
 }	t_drawctx;
 
+typedef struct s_rgb
+{
+	int	r;
+	int	g;
+	int	b;
+}	t_rgb;
+
 int				file_name_err(char	*file_name);
 t_map			*read_map(char *filename);
 t_point			**z_map_to_point(t_map *map, float scale);
@@ -73,4 +80,6 @@ void			free_points(t_point **points, int height);
 void			free_map(t_map *map);
 void			draw_map(t_fdf *fdf);
 float			get_auto_scale(t_map *map, int width, int height);
+uint32_t		to_rgba(int color);
+int				get_gradient_color(int c1, int c2, float t);
 #endif
