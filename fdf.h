@@ -54,6 +54,15 @@ typedef struct s_fdf
 	float		y_offset;
 }	t_fdf;
 
+typedef struct s_drawctx
+{
+	mlx_image_t	*img;
+	t_point		a;
+	t_point		b;
+	int			steps;
+	int			i;
+}	t_drawctx;
+
 int				file_name_err(char	*file_name);
 t_map			*read_map(char *filename);
 t_point			**z_map_to_point(t_map *map, float scale);

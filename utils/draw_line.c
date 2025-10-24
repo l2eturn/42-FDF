@@ -12,8 +12,6 @@
 
 #include "fdf.h"
 
-#include "fdf.h"
-
 static uint32_t	to_rgba(int color)
 {
 	uint8_t	r;
@@ -53,50 +51,50 @@ static int	calc_steps(float dx, float dy)
 	return (fabsf(dy));
 }
 
-static void	draw_pixel_at(mlx_image_t *img, t_point a, t_point b,
-			float t, float x, float y)
+static void	draw_pixel_at(t_drawctx *ctx, float t, float x, float y)
 {
 	int	color;
 
-	color = get_gradient_color(a.color, b.color, t);
-	mlx_put_pixel(img, (int)x, (int)y, to_rgba(color));
+	color = get_gradient_color(ctx->a.color, ctx->b.color, t);
+	mlx_put_pixel(ctx->img, (int)x, (int)y, to_rgba(color));
 }
 
-static void	draw_step(mlx_image_t *img, t_point a, t_point b,
-			int steps, int i, float x, float y)
+static void	draw_step(t_drawctx *ctx, float x, float y)
 {
 	float	t;
 
-	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
+	if (x < 0 || y < 0 || x >= ctx->img->width || y >= ctx->img->height)
 		return ;
-	if (steps == 0)
+	if (ctx->steps == 0)
 		t = 0.0f;
 	else
-		t = (float)i / (float)steps;
-	draw_pixel_at(img, a, b, t, x, y);
+		t = (float)ctx->i / (float)ctx->steps;
+	draw_pixel_at(ctx, t, x, y);
 }
 
 static void	draw_line(t_point a, t_point b, mlx_image_t *img)
 {
-	float	dx;
-	float	dy;
-	int		steps;
-	float	x;
-	float	y;
-	int		i;
+	t_drawctx	ctx;
+	float		dx;
+	float		dy;
+	float		x;
+	float		y;
 
+	ctx.img = img;
+	ctx.a = a;
+	ctx.b = b;
 	dx = b.x - a.x;
 	dy = b.y - a.y;
-	steps = calc_steps(dx, dy);
+	ctx.steps = calc_steps(dx, dy);
 	x = a.x;
 	y = a.y;
-	i = 0;
-	while (i <= steps)
+	ctx.i = 0;
+	while (ctx.i <= ctx.steps)
 	{
-		draw_step(img, a, b, steps, i, x, y);
-		x += dx / steps;
-		y += dy / steps;
-		i++;
+		draw_step(&ctx, x, y);
+		x += dx / ctx.steps;
+		y += dy / ctx.steps;
+		ctx.i++;
 	}
 }
 
@@ -128,3 +126,4 @@ void	draw_map(t_fdf *fdf)
 		y++;
 	}
 }
+
