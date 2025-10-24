@@ -12,8 +12,6 @@
 
 #include "fdf.h"
 
-#include "fdf.h"
-
 int	count_words(char **split)
 {
 	int	count = 0;
